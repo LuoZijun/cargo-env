@@ -8,7 +8,7 @@ get all environment variables rust cargo and rustup toolchain manager
 # build and install cargo-env 
 git clone https://github.com/mehrati/cargo-env \
 && cd cargo-env \
-&& make \
+&& make 
 ```
 **run**
 ```sh
