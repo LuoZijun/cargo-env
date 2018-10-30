@@ -1,6 +1,6 @@
 # cargo-env
 
-get all environment variables rust cargo and rustup toolchain manager
+get all environment variables rust cargo and rustup
 
 **Build and install**
 
