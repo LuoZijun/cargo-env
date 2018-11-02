@@ -17,4 +17,4 @@ cargo env
 
 **dependency**
 
-git, rust, cargo, gnu make
+git,rust,cargo,gnu make,binutils,upx

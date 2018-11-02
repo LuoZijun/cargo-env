@@ -4,7 +4,7 @@ extern crate colored;
 
 use clap::{App, AppSettings, SubCommand};
 use colored::*;
-use std::env::var;
+use std::env;
 
 const RUST_VARS: &[&str] = &[
     "RUST_TEST_THREADS",
@@ -86,6 +86,11 @@ const RUSTUP_VARS: &[&str] = &[
     "RUSTUP_UPDATE_ROOT",
 ];
 
+struct ToolEnvVars<'a> {
+    name: &'a str,
+    vars: &'a [&'a str],
+}
+
 fn main() {
     let matches = App::new("cargo")
         .bin_name("cargo")
@@ -95,10 +100,24 @@ fn main() {
         .setting(AppSettings::ArgRequiredElseHelp)
         .subcommand(SubCommand::with_name("env").version(crate_version!()))
         .get_matches();
+    let tenvs: &[ToolEnvVars] = &[
+        ToolEnvVars {
+            name: "Rust",
+            vars: RUST_VARS,
+        },
+        ToolEnvVars {
+            name: "Cargo",
+            vars: CARGO_VARS,
+        },
+        ToolEnvVars {
+            name: "Rustup",
+            vars: RUSTUP_VARS,
+        },
+    ];
     if matches.subcommand_matches("env").is_some() {
-        print_vars("Rust", RUST_VARS);
-        print_vars("Cargo", CARGO_VARS);
-        print_vars("Rustup", RUSTUP_VARS);
+        for tool in tenvs {
+            print_vars(tool.name, tool.vars);
+        }
     }
 }
 
@@ -108,11 +127,9 @@ fn print_vars(name: &str, vars: &[&str]) {
         name
     );
     println!("{}", line.green().bold());
-    for v in vars {
-        if let Ok(out) = var(v) {
-            println!("{} {} {}", v.blue(), "=".blue(), out);
-        } else {
-            println!("{} {}", v.blue(), "=".blue());
+    for var in vars {
+        if let Ok(out) = env::var(var) {
+            println!("{} {} {}", var.blue(), "=".yellow(), out);
         }
     }
 }

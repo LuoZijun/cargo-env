@@ -5,14 +5,16 @@ RUSTDOC = rustdoc
 
 .PHONY: all
 all:
-	cargo build --release \
-	&& cargo install --path . \
-	&& cargo clean \
-	&& echo "ok cargo-env installed" 
+	cargo build --release 
+	strip target/release/cargo-env 
+	upx target/release/cargo-env 
+	cargo install --path . 
 
 .PHONY: build
 build:
-	cargo build --release
+	cargo build --release 
+	strip target/release/cargo-env 
+	upx target/release/cargo-env 
 
 .PHONY: run
 run:
