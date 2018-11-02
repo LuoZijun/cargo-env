@@ -2,7 +2,7 @@
 name = "cargo-env"
 description = "run command in cargo"
 homepage = "https://github.com/mehrati/cargo-env"
-keywords = ["cargo", "subcommand","environment variables"]
+keywords = ["cargo", "subcommand","env"]
 license = "MIT"
 repository = "https://github.com/mehrati/cargo-env"
 version = "0.1.0"

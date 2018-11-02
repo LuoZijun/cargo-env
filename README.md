@@ -2,7 +2,13 @@
 
 get all environment variables rust cargo and rustup
 
-**Build and install**
+**install**
+
+```sh
+cargo install cargo-env
+```
+
+**Build source and install**
 
 ```sh
 # build and install cargo-env 
@@ -17,4 +23,4 @@ cargo env
 
 **dependency**
 
-git,rust,cargo,gnu make,binutils,upx
+git, rust, cargo, gnu make, binutils, upx
