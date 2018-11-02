@@ -16,11 +16,13 @@ git clone https://github.com/mehrati/cargo-env \
 && cd cargo-env \
 && make 
 ```
+
+**Build dependency**
+
+git, rust, cargo, gnu make, binutils, upx
+
 **run**
+
 ```sh
 cargo env 
 ```
-
-**dependency**
-
-git, rust, cargo, gnu make, binutils, upx
